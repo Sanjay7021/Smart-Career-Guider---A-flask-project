@@ -1,0 +1,37 @@
+{% extends "base.html" %} {% block content %} <br /><br /><br /><br />
+<div class="col-lg-9">
+  <div class="table-responsive table--no-card m-b-30">
+    <table class="table table-borderless table-striped table-earning">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Expertid</th>
+          <th>Edit/Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for course in course %}
+        <tr>
+          <td>{{course.id}}</td>
+          <td>{{course.name}}</td>
+          <td>{{course.description}}</td>
+          <td>{{course.expertid}}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-danger"
+              onclick="deleteCourse({{course.id}})"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

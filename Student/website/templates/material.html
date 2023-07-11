@@ -1,0 +1,49 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="col-lg-9">
+  <div class="table-responsive table--no-card m-b-30">
+    <table class="table table-borderless table-striped table-earning">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Description</th>
+          <th>Filename</th>
+          <th>Data</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for task in tasks %}
+        <tr>
+          <td>{{ task.id }}</td>
+          <td>{{ task.Description }}</td>
+          <td>{{ task.filename }}</td>
+          <td>
+            {% if task.filename.endswith('.jpg') or
+            task.filename.endswith('.png') %}
+            <img
+              src="{{ url_for('static', filename='uploads/' + task.filename) }}"
+              alt="Image"
+            />
+            {% elif task.filename.endswith('.pdf') %}
+            <embed
+              src="{{ url_for('static', filename='uploads/' + task.filename) }}"
+              width="600"
+              height="800"
+              type="application/pdf"
+            />
+            {% elif task.filename.endswith('.txt') %}
+            <pre>{{ task.data.decode('utf-8') }}</pre>
+            {% else %}
+            <a href="{{ url_for('auth.download_task', task_id=task.id) }}"
+              >Download</a
+            >
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

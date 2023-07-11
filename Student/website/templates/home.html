@@ -1,0 +1,57 @@
+{% extends "base.html" %} {% block content %}
+<!-- WELCOME-->
+<section class="welcome p-t-10">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="title-4">
+          Welcome
+          <span>{{ username }}!</span>
+        </h1>
+        <hr class="line-seprate" />
+        <h1 class="title-4">
+          Our Best Programs for
+          <span>You!</span>
+        </h1>
+        <hr class="line-seprate" />
+      </div>
+    </div>
+  </div>
+</section>
+<!-- END WELCOME-->
+
+<div class="main-content">
+  <div class="section__content section__content--p30">
+    <div class="container-fluid">
+      <div class="row">
+        {% for course in courses %}
+        <div class="col-md-3" style="margin-left: 95px; margin-top: 20px">
+          <div class="card">
+            <img
+              class="card-img-top"
+              src="../static/images/bg-title-01.jpg"
+              alt="Card image cap"
+            />
+            <div class="card-body">
+              <h4 class="card-title mb-3">{{ course.name }}</h4>
+              <p class="card-text">{{ course.description }}</p>
+              <br />
+              <div align="center">
+                <button
+                  type="button"
+                  class="btn btn-primary btn-sm"
+                  onclick="joincourse('{{ course.id }}')"
+                >
+                  <i class="fa fa-star"></i>&nbsp; View Course
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %} {% block content %} <br /><br /><br /><br />
+<div class="col-lg-9">
+  <div class="table-responsive table--no-card m-b-30">
+    <table class="table table-borderless table-striped table-earning">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Messages</th>
+          <th>Date</th>
+          <th>time</th>
+          <th>Sender</th>
+          <th>User's Id</th>
+          <th>Expert's Id</th>
+          <th>Edit/Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for chat in chat %}
+        <tr>
+          <td>{{chat.id}}</td>
+          <td>{{chat.msg}}</td>
+          <td>{{chat.date}}</td>
+          <td>{{chat.time}}</td>
+          <td>{{chat.sender}}</td>
+          <td>{{chat.userid}}</td>
+          <td>{{chat.expertid}}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-danger"
+              onclick="deletechat({{chat.id}})"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

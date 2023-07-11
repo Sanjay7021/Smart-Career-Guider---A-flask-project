@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" type="image/png" href="../static/img/smt.png" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../static/css/style.css" />
+    <title>Smart Career Guider</title>
+
+    <script defer src="../static/js/script.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav">
+        <img
+          src="../static/img/smt.png"
+          alt=""
+          class="nav__logo"
+          id="logo"
+          designer="Jonas"
+          data-version-number="3.0"
+        />
+        <ul class="nav__links">
+          <li class="nav__item">
+            <a class="nav__link" href="#section--1">Features</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#section--2">Operations</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#section--3">Testimonials</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link nav__link--btn" href="#section-4">Sign In</a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header__title">
+        <!-- <h1 onclick="alert('HTML alert')"> -->
+        <h1>
+          When
+          <!-- Green highlight effect -->
+          <span class="highlight">Student</span>
+          meets correct<br />
+          <span class="highlight">Mentorship</span>
+        </h1>
+        <h4>A simpler experience for growing carreer.</h4>
+        <button class="btn--text btn--scroll-to">Learn more &DownArrow;</button>
+        <img
+          src="../static/img/hero.png"
+          class="header__img"
+          alt="Minimalist bank items"
+        />
+      </div>
+    </header>
+
+    <section class="section" id="section--1">
+      <div class="section__title">
+        <h2 class="section__description">Features</h2>
+        <h3 class="section__header">
+          Everything you need in a study and more.
+        </h3>
+      </div>
+
+      <div class="features">
+        <img
+          src="../static/img/digital-lazy.jpg"
+          data-src="../static/img/digital.jpg"
+          alt="Computer"
+          class="features__img lazy-img"
+        />
+        <div class="features__feature">
+          <div class="features__icon">
+            <svg>
+              <use xlink:href="../static/img/icons.svg#icon-monitor"></use>
+            </svg>
+          </div>
+          <h5 class="features__header">Different Programs</h5>
+          <p>
+            There is plenty of courses avainlable on career guidance. You can
+            choose any of these.
+          </p>
+        </div>
+
+        <div class="features__feature">
+          <div class="features__icon">
+            <svg>
+              <use xlink:href="../static/img/icons.svg#icon-trending-up"></use>
+            </svg>
+          </div>
+          <h5 class="features__header">100% Mentorship</h5>
+          <p>
+            Mentor providing 100% mentorships until your course get finished.
+          </p>
+        </div>
+        <img
+          src="../static/img/grow-lazy.jpg"
+          data-src="../static/img/grow.jpg"
+          alt="Plant"
+          class="features__img lazy-img"
+        />
+
+        <img
+          src="../static/img/card-lazy.jpg"
+          data-src="../static/img/card.jpg"
+          alt="Credit card"
+          class="features__img lazy-img"
+        />
+        <div class="features__feature">
+          <div class="features__icon">
+            <svg>
+              <use xlink:href="../static/img/icons.svg#icon-credit-card"></use>
+            </svg>
+          </div>
+          <h5 class="features__header">Report Card</h5>
+          <p>
+            After the assesment of student assignments and test. student have
+            their verified report card. which is updating every month by month
+            so student can improve their mistakes.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="section--2">
+      <div class="section__title">
+        <h2 class="section__description">Operations</h2>
+        <h3 class="section__header">
+          Everything as simple as possible, but no simpler.
+        </h3>
+      </div>
+
+      <div class="operations">
+        <div class="operations__tab-container">
+          <button
+            class="btn operations__tab operations__tab--1 operations__tab--active"
+            data-tab="1"
+          >
+            <span>01</span>Select Course
+          </button>
+          <button class="btn operations__tab operations__tab--2" data-tab="2">
+            <span>02</span>Assigning Mentorship
+          </button>
+          <button class="btn operations__tab operations__tab--3" data-tab="3">
+            <span>03</span>View Report card
+          </button>
+          <!-- <button class="btn operations__tab operations__tab--4" data-tab="4">
+            <span>04</span>Cancel Mentorship
+          </button> -->
+        </div>
+        <div
+          class="operations__content operations__content--1 operations__content--active"
+        >
+          <div class="operations__icon operations__icon--1">
+            <svg>
+              <use xlink:href="../static/img/icons.svg#icon-upload"></use>
+            </svg>
+          </div>
+          <h5 class="operations__header">
+            Find respective course from program calender
+          </h5>
+          <p>
+            In program caleder. Different types of career oportunity wise
+            courses is given. YOu can pick any of them and start learning.
+          </p>
+        </div>
+
+        <div class="operations__content operations__content--2">
+          <div class="operations__icon operations__icon--2">
+            <svg>
+              <use xlink:href="../static/img/icons.svg#icon-home"></use>
+            </svg>
+          </div>
+          <h5 class="operations__header">
+            Start a course and instantly assign a mentor
+          </h5>
+          <p>
+            With the course description, the mentor details also availble. until
+            to the compeletion of course you can directly interect with mentor
+            by chating and meeting.
+          </p>
+        </div>
+        <div class="operations__content operations__content--3">
+          <div class="operations__icon operations__icon--3">
+            <svg>
+              <use xlink:href="../static/img/icons.svg#icon-home"></use>
+            </svg>
+          </div>
+          <h5 class="operations__header">Report card</h5>
+          <p>
+            Monthly Report card is updating by the mentor based on the
+            performance of student. after cmpleting the course fully you can get
+            the one final report which you can get as pdf so you can print out
+            it.
+          </p>
+        </div>
+        <!-- <div class="operations__content operations__content--4">
+          <div class="operations__icon operations__icon--4">
+            <svg>
+              <use xlink:href="img/icons.svg#icon-user-x"></use>
+            </svg>
+          </div>
+          <h5 class="operations__header">
+            No longer need Mentorship ? No problem! Close it instantly.
+          </h5>
+          <p>
+            you can easily cancel the mentorship by clicking on cancel mentorship button.
+          </p>
+        </div> -->
+      </div>
+    </section>
+
+    <section class="section" id="section--3">
+      <div class="section__title section__title--testimonials">
+        <h2 class="section__description">Not sure yet?</h2>
+        <h3 class="section__header">
+          Many of the students are already making their career successfull.
+        </h3>
+      </div>
+
+      <div class="slider">
+        <div class="slide">
+          <div class="testimonial">
+            <h5 class="testimonial__header">Best decision ever!</h5>
+            <blockquote class="testimonial__text">
+              I'm Sanjay dantani. I affreded to choose career for my life. I'm
+              sure about filed but lack knowledge i didn't complete it. than i
+              visit this side. i started complete DSA course from here. The
+              mentor provides me complete guidance how to become advance in
+              programming due to many practice and assignmets by mentor i break
+              the MNC Company's interview.
+            </blockquote>
+            <address class="testimonial__author">
+              <img
+                src="../static/img/user-3.jpg"
+                alt=""
+                class="testimonial__photo"
+              />
+              <h6 class="testimonial__name">Sanjay Dantani</h6>
+              <p class="testimonial__location">Ahmedabad, Gujarat</p>
+            </address>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="testimonial">
+            <h5 class="testimonial__header">
+              The last step to becoming a complete minimalist
+            </h5>
+            <blockquote class="testimonial__text">
+              Quisquam itaque deserunt ullam, quia ea repellendus provident,
+              ducimus neque ipsam modi voluptatibus doloremque, corrupti
+              laborum. Incidunt numquam perferendis veritatis neque repellendus.
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo
+              deserunt exercitationem deleniti.
+            </blockquote>
+            <address class="testimonial__author">
+              <img
+                src="../static/img/user-2.jpg"
+                alt=""
+                class="testimonial__photo"
+              />
+              <h6 class="testimonial__name">Miyah Miles</h6>
+              <p class="testimonial__location">London, UK</p>
+            </address>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="testimonial">
+            <h5 class="testimonial__header">
+              Finally free from old-school banks
+            </h5>
+            <blockquote class="testimonial__text">
+              Debitis, nihil sit minus suscipit magni aperiam vel tenetur
+              incidunt commodi architecto numquam omnis nulla autem,
+              necessitatibus blanditiis modi similique quidem. Odio aliquam
+              culpa dicta beatae quod maiores ipsa minus consequatur error sunt,
+              deleniti saepe aliquid quos inventore sequi. Necessitatibus id
+              alias reiciendis, perferendis facere.
+            </blockquote>
+            <address class="testimonial__author">
+              <img
+                src="../static/img/user-3.jpg"
+                alt=""
+                class="testimonial__photo"
+              />
+              <h6 class="testimonial__name">Francisco Gomes</h6>
+              <p class="testimonial__location">Lisbon, Portugal</p>
+            </address>
+          </div>
+        </div>
+
+        <button class="slider__btn slider__btn--left">&larr;</button>
+        <button class="slider__btn slider__btn--right">&rarr;</button>
+        <div class="dots"></div>
+      </div>
+    </section>
+
+    <section class="section section--sign-up" id="section-4">
+      <div class="section__title">
+        <h3 class="section__header">
+          The best day to join
+          <span class="highlight">Career Guidence</span> is today!
+        </h3>
+      </div>
+      <a href="/login"
+        ><button class="btn btn--show-modal">Sign In / Up</button></a
+      >
+      <br /><br />
+      <div class="section__title">
+        <h3 class="section__header">
+          Contact at
+          <span class="highlight">Career Guidence Team</span>
+        </h3>
+      </div>
+      <a href="/contact_us"
+        ><button class="btn btn--show-modal">Contact us</button></a
+      >
+    </section>
+    <!-- contact us-->
+
+    <footer class="footer">
+      <p class="footer__copyright">
+        Copyright © 2023. All rights reserved by Career guidence team "SCG".
+      </p>
+    </footer>
+  </body>
+</html>

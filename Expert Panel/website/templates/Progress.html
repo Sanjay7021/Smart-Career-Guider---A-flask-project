@@ -1,0 +1,92 @@
+{% extends "base.html" %} {% block content %} <br /><br /><br /><br />
+<style>
+  .chart-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .chart-card {
+    width: 400px;
+    margin: 20px;
+  }
+
+  .chart-title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+</style>
+
+<div class="chart-container">
+  {% for quiz_title in quiz_titles %}
+  <div class="chart-card">
+    <h3 class="chart-title">{{ quiz_title }}</h3>
+    <canvas id="chart-{{ loop.index }}"></canvas>
+  </div>
+  {% endfor %}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  try {
+    var data = JSON.parse('{{ results | safe | replace("'", "\'") }}');
+
+    Object.keys(data).forEach(function (quizTitle, index) {
+      var labels = [];
+      var values = [];
+
+      data[quizTitle].forEach(function (item) {
+        labels.push(item.userid);
+        values.push(item.percentage);
+      });
+
+      var ctx = document.getElementById("chart-" + (index + 1));
+
+      if (ctx) {
+        ctx.height = 220;
+        new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                label: "User's percentage",
+                data: values,
+                borderColor: "transparent",
+                borderWidth: "0",
+                backgroundColor: "lightblue",
+              },
+            ],
+          },
+          options: {
+            maintainAspectRatio: true,
+            legend: {
+              display: false,
+            },
+            scales: {
+              xAxes: [
+                {
+                  labelString: "user id's",
+                  display: true,
+                  categoryPercentage: 1,
+                  barPercentage: 0.65,
+                },
+              ],
+              yAxes: [
+                {
+                  labelString: "user percentages",
+                  display: true,
+                },
+              ],
+            },
+          },
+        });
+      }
+    });
+  } catch (error) {
+    console.log(error);
+  }
+</script>
+{% endblock %}

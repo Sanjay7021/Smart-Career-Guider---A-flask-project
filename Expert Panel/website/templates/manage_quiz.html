@@ -1,0 +1,56 @@
+{% extends "base.html" %} {% block content %} <br /><br /><br /><br />
+<div class="col-lg-9">
+  <div class="table-responsive table--no-card m-b-30">
+    <table class="table table-borderless table-striped table-earning">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>quiz title</th>
+          <th>Time Limit</th>
+          <th>Activate/Deactivate</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for quiz in quiz %}
+        <tr>
+          <td>{{loop.index}}</td>
+          <td>{{quiz.title}}</td>
+          <td>{{quiz.time_limit}} minutes</td>
+          <td>
+            {% set status = quiz.status %} {% if not status %}
+            <button
+              type="button"
+              class="btn btn-info"
+              onclick="actquiz('{{quiz.title}}')"
+            >
+              Activate
+            </button>
+            {% else %}
+            <button
+              type="button"
+              class="btn btn-danger"
+              onclick="actquiz('{{quiz.title}}')"
+            >
+              Deactivate
+            </button>
+            {% endif %}
+          </td>
+          <td>
+            <!-- <button type="button" class="btn btn-info">Edit</button> -->
+            <button
+              type="button"
+              class="btn btn-danger"
+              onclick="deletequiz('{{quiz.title}}')"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

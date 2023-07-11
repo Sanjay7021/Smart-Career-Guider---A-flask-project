@@ -1,0 +1,98 @@
+{% extends "base.html" %} {% block content %}
+
+<!-- WELCOME-->
+<section class="welcome p-t-10">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="title-4">
+          All The Best
+          <span>{{ user.name }}!</span>
+        </h1>
+        <hr class="line-seprate" />
+      </div>
+    </div>
+  </div>
+</section>
+<!-- END WELCOME-->
+
+<div class="main-content">
+  <div class="section__content section__content--p30">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <!-- DATA TABLE -->
+          <h3 class="title-5 m-b-35">Quiz Status</h3>
+          <div class="table-responsive table-responsive-data2">
+            <table class="table table-data2">
+              <thead>
+                <tr>
+                  <th>Sr.</th>
+                  <th>Quiz Name</th>
+                  <!-- <th>Correct Marks</th> -->
+                  <th>Time Limit</th>
+                  <th>Status</th>
+                  <th>Marks</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for quiz in quizzes %}
+                <tr class="tr-shadow">
+                  <td>{{ loop.index }}</td>
+                  <td>
+                    <span class="block-email">{{ quiz.title }}</span>
+                  </td>
+                  <!-- <td class="desc">{{ quiz.cans }}</td> -->
+                  <td>{{ quiz.time_limit }}</td>
+                  <!-- <td>Debug: {{ quiz.status }}</td> -->
+                  <td>
+                    {% if quiz.status %}
+                    <span class="status--process">Active</span>
+                    {% else %}
+                    <span class="status--denied">Inactive</span>
+                    {% endif %}
+                  </td>
+                  <td>{{ quiz.total_score}}</td>
+                  <td>
+                    {% if quiz.status %}
+                    <!-- <div class="table-data-feature"> -->
+                    <button
+                      class="btn btn-primary btn-sm start-btn"
+                      title="Start"
+                      data-quiz="{{ quiz.title | safe }}"
+                    >
+                      <i class="fa fa-star"></i>&nbsp;Start
+                    </button>
+                    <!-- </div> -->
+                    {% else %}
+                    <button class="btn btn-secondary btn-sm start-btn">
+                      <i class="fa fa-lightbulb-o"></i>&nbsp;Wait
+                    </button>
+                    {% endif %}
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <!-- END DATA TABLE -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  // Retrieve the quiz title when the Start button is clicked
+  const startButtons = document.querySelectorAll(".start-btn");
+  startButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const quizTitle = button.getAttribute("data-quiz");
+      // Redirect to the startquiz route passing the quiz title
+      window.location.href =
+        "/startquiz?quizTitle=" + encodeURIComponent(quizTitle);
+    });
+  });
+</script>
+
+{% endblock %}

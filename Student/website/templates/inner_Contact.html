@@ -1,0 +1,93 @@
+{% extends "base.html" %} {% block content %}
+<!-- WELCOME-->
+<section class="welcome p-t-10">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="title-4">
+          Share your
+          <span>Experience :)</span>
+        </h1>
+        <hr class="line-seprate" />
+      </div>
+    </div>
+  </div>
+</section>
+<!-- END WELCOME-->
+<!-- Feedback Form-->
+
+<div
+  class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12"
+  style="margin-left: 200px; margin-top: 20px"
+>
+  <div class="card h-90">
+    <div class="card-body">
+      <div class="row gutters">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+          <h6 class="mb-6 text-primary">Feedback Form</h6>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+          <form action="/contact" method="POST">
+          <div class="form-group">
+            <label for="fullName">Username</label>
+            <input
+              type="text"
+              class="form-control"
+              id=""
+              name="name"
+              value="{{user.name}}"
+            />
+          </div>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+          <div class="form-group">
+            <label for="eMail">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              id=""
+              name="email"
+              value="{{user.email}}"
+            />
+          </div>
+        </div>
+        <br />
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+          <div class="form-group">
+            <label for="phone">Subject</label>
+            <input
+              type="text"
+              class="form-control"
+              id=""
+              name="subject"
+              placeholder="Subject"
+            />
+          </div>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+          <div class="form-group">
+            <label for="website">Message</label>
+            <input
+              type="textarea"
+              class="form-control textbox"
+              id=""
+              name="message"
+              placeholder="Message"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row gutters">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+          <div class="text-right">
+            <button type="submit" name="update" class="btn btn-primary">
+              SEND
+            </button>
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

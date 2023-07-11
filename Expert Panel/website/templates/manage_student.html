@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% block content %} <br /><br /><br /><br />
+<div class="col-lg-9">
+  <div class="table-responsive table--no-card m-b-30">
+    <table class="table table-borderless table-striped table-earning">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>number</th>
+          <th>address</th>
+          <th>pincode</th>
+          <th>Edit/Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+        <tr>
+          <td>{{user.id}}</td>
+          <td>{{user.name}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.number}}</td>
+          <td>{{user.address}}</td>
+          <td>{{user.pincode}}</td>
+          <td>
+            <button type="button" class="btn btn-info">Edit</button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              onclick="deleteuser({{user.id}})"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

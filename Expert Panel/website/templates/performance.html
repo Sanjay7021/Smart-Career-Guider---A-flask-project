@@ -1,0 +1,49 @@
+{% extends "base.html" %} {% block content %}<br /><br /><br /><br />
+
+<div class="col-lg-9">
+  <div class="table-responsive table--no-card m-b-30">
+    <table class="table table-borderless table-striped table-earning">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>quiz_title</th>
+          <th>Percentage</th>
+          <th>userid</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in quiz %}
+        <tr>
+          <td>{{user.id}}</td>
+          <td>{{user.quiz_title}}</td>
+          <td>{{user.percentage}}</td>
+          <td>{{user.userid}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="col-lg-6">
+  <div class="card">
+    <div class="card-header">
+      <h4>{{expert.specialization}}</h4>
+      <p>overall performance of students</p>
+    </div>
+    <div class="card-body">
+      <div class="progress mb-2">
+        <div
+          class="progress-bar bg-success"
+          role="progressbar"
+          style="width: {{average_percentage}}%"
+          aria-valuenow="{{average_percentage}}"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        >
+          {{average_percentage}}%
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

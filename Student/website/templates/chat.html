@@ -1,0 +1,51 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="main-content">
+  <div class="section__content section__content--p30">
+    <div class="container-fluid">
+      <h5 class="heading-title">Message Box</h5>
+      <div class="row">
+        <div class="col col-lg-11">
+          <section
+            class="card"
+            style="width: auto; height: 500px; overflow: auto"
+          >
+            <div class="card-body text-secondary">
+              <div class="messages" style="min-height: 200px">
+                {% for message in messages %} {% if message.sender ==
+                expert.name %}
+                <div style="text-align: left; margin-left: 30px">
+                  <p><b>{{expert.name}}</b>: {{ message.msg }}</p>
+                </div>
+                {% else %}
+                <div style="text-align: left; margin-left: 885px">
+                  <p><b>{{user.name}}</b>: {{ message.msg }}</p>
+                </div>
+                {% endif %} {% endfor %}
+              </div>
+            </div>
+            <form
+              action="{{ url_for('auth.chat') }}"
+              method="POST"
+              class="chat-form"
+            >
+              <!-- <input type="hidden" name="userid" value="{{ user.id }}" /> -->
+              <div class="row form-group">
+                <div class="col col-sm-10" style="padding-left: 50px">
+                  <input
+                    type="text"
+                    name="msg"
+                    placeholder="Enter Message Here..."
+                    class="form-control"
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary">Send</button>
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

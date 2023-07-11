@@ -1,0 +1,66 @@
+{% extends "base.html" %} {% block content %} <br /><br /><br /><br />
+<div class="col-lg-6">
+  <div class="au-card m-b-30">
+    <div class="au-card-inner">
+      <h3 class="title-2 m-b-40">Bar chart</h3>
+      <canvas id="barChart"></canvas>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    try {
+      // bar chart
+      var ctx = document.getElementById("barChart");
+      if (ctx) {
+        ctx.height = 200;
+        var myChart = new Chart(ctx, {
+          type: "bar",
+          defaultFontFamily: "Poppins",
+          data: {
+            labels: {{ expert_ids | tojson | safe }},
+            datasets: [
+    {
+      label: "Expert Performance",
+      data: {{ performances | safe }},
+      borderColor: "rgba(0, 123, 255, 0.9)",
+      borderWidth: "0",
+      backgroundColor: "rgba(0, 123, 255, 0.5)",
+      fontFamily: "Poppins",
+    },
+  ],
+          },
+          options: {
+            legend: {
+              position: "top",
+              labels: {
+                fontFamily: "Poppins",
+              },
+            },
+            scales: {
+              xAxes: [
+                {
+                  ticks: {
+                    fontFamily: "Poppins",
+                  },
+                },
+              ],
+              yAxes: [
+                {
+                  ticks: {
+                    beginAtZero: true,
+                    fontFamily: "Poppins",
+                  },
+                },
+              ],
+            },
+          },
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+</script>
+
+{% endblock %}

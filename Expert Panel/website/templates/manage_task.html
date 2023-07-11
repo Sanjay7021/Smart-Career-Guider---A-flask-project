@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% block content %} <br /><br /><br /><br />
+<div class="col-lg-9">
+  <div class="table-responsive table--no-card m-b-30">
+    <table class="table table-borderless table-striped table-earning">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Description</th>
+          <th>File Name</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for task in task %}
+        <tr>
+          <td>{{task.id}}</td>
+          <td>{{task.Description}}</td>
+          <td>{{task.filename}}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-info"
+              onclick="editmat('{{task.id}}')"
+            >
+              Edit
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
+              onclick="deletequiz('{{task.id}}')"
+            >
+              Delete
+            </button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

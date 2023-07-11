@@ -1,0 +1,119 @@
+{% extends "base.html" %} {% block content %}
+
+<!-- <div class="header">
+  <h1>Quiz Application</h1>
+  <div class="counter">
+    <span id="question-counter">0</span> / <span id="total-questions">0</span>
+  </div>
+</div> -->
+
+<form
+  id="quiz-form"
+  action="{{ url_for('auth.start_quiz', quiz_title=quiz_title) }}"
+  method="POST"
+>
+  {% for question in quiz %}
+  <div class="question" style="display: none">
+    <h3>Question ID: {{ question.id }}</h3>
+    <p>Question: {{ question.question }}</p>
+    <ul type="none">
+      <li>
+        <input
+          type="radio"
+          name="{{ question.id }}"
+          value="{{ question.op1}}"
+        />
+        A. {{ question.op1 }}
+      </li>
+      <li>
+        <input
+          type="radio"
+          name="{{ question.id }}"
+          value="{{ question.op2}}"
+        />
+        B. {{ question.op2 }}
+      </li>
+      <li>
+        <input
+          type="radio"
+          name="{{ question.id }}"
+          value="{{ question.op3}}"
+        />
+        C. {{ question.op3 }}
+      </li>
+      <li>
+        <input
+          type="radio"
+          name="{{ question.id }}"
+          value="{{ question.op4}}"
+        />
+        D. {{ question.op4 }}
+      </li>
+    </ul>
+    <hr />
+    {% if loop.last %}
+    <input type="button" value="Submit" onclick="submitForm()" />
+    {% else %}
+    <input type="button" class="next-button" value="Next" />
+    {% endif %}
+  </div>
+  {% endfor %}
+
+  <!-- Hidden fields to store question IDs and user answers -->
+  {% for question in quiz %}
+  <input type="hidden" name="question_ids[]" value="{{ question.id }}" />
+  <input
+    type="hidden"
+    name="user_answers[]"
+    value=""
+    id="user-answer-{{ question.id }}"
+  />
+  <input type="hidden" name="quiz_title" value="{{ question.title }}" />
+  {% endfor %}
+</form>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+  $(".next-button").click(function () {
+    var currentQuestion = $(this).closest(".question");
+    var questionId = currentQuestion
+      .find("h3")
+      .text()
+      .trim()
+      .split(":")[1]
+      .trim();
+    var selectedAnswer = currentQuestion
+      .find("input[name='" + questionId + "']:checked")
+      .val();
+    $("#user-answer-" + questionId).val(selectedAnswer);
+    currentQuestion.hide().next().show();
+  });
+
+  function submitForm() {
+    var answers = {};
+    $("input[name^='user_answers']").each(function () {
+      var questionId = $(this).attr("name").split("[")[1].split("]")[0];
+      var selectedAnswer = $(this).val();
+      answers[questionId] = selectedAnswer;
+    });
+    var quizTitle = $("input[name='quiz_title']").val(); // Use 'quiz_title' as the name attribute
+    $("#quiz-form").append(
+      "<input type='hidden' name='answers' value='" +
+        JSON.stringify(answers) +
+        "'>"
+    );
+    $("#quiz-form").append(
+      "<input type='hidden' name='quiz_title' value='" + quizTitle + "'>" // Use 'quiz_title' as the name attribute
+    );
+    $("#quiz-form").submit();
+  }
+
+  $(document).ready(function () {
+    $(".question:first").show(); // Show the first question initially
+    $(".next-button").click(function () {
+      $(this).closest(".question").hide().next().show(); // Show the next question on button click
+    });
+  });
+</script>
+
+{% endblock %}

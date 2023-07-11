@@ -1,0 +1,59 @@
+{% extends "base.html" %} {% block content %}
+<div class="main-content">
+  <div class="section__content section__content--p30">
+    <div class="container-fluid">
+      <div class="row m-t-30">
+        <div class="col-md-12">
+          <!-- DATA TABLE-->
+          <div class="col-lg-6">
+            <div class="table-responsive m-b-40">
+              <table class="table table-borderless table-data3">
+                <thead>
+                  <tr>
+                    <th>id</th>
+                    <th>quiz title</th>
+                    <th>percentage</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for result in results %}
+                  <tr>
+                    <td>{{result.id}}</td>
+                    <td>{{result.quiz_title}}</td>
+                    <td>{{result.percentage}}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- END DATA TABLE-->
+        </div>
+
+        <div class="col-lg-6">
+          <div class="card">
+            <div class="card-header">
+              <h4>{{course.name}}</h4>
+            </div>
+            <div class="card-body">
+              <div class="progress mb-2">
+                <div
+                  class="progress-bar bg-success"
+                  role="progressbar"
+                  style="width: {{average_percentage}}%"
+                  aria-valuenow="{{average_percentage}}"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
+                  {{average_percentage}}%
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
